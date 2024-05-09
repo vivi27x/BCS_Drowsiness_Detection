@@ -24,7 +24,7 @@ Sorry, that's way longer than 300 words 😅 but that's how I could convey it co
 The video, in short, discusses various ways to visualize convolution.
 Mathematically convolution is :
 
-![convolution.png](convolution.png)
+![convolution](https://github.com/KrishJain256/BCS-Drowsiness-Detection/assets/138436914/376d1f3a-b67e-4c5c-bff3-dad97e1c2410)
 
 But here, we visualize it like:
 1. Linear List Convolution:
