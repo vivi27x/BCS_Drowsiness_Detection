@@ -3,7 +3,7 @@ Give two functions and I can add, subtract, multiply and divide them to get a ne
 **(f<sub> * </sub>g) = integration -infinity to +infinity of f(x)g(t-x)dx**<br>
 Although the defining formula might seem daunting, the idea is pretty basic.<br>
 Lets take an example an array A = [3,5,7,11,13,17,19] and array B =[1,2,4]. Convolving A and B is like Sliding B under A and taking the weighted sum of the enteries of A with corresponding weights in B.<br> 
-Output is an array whose first entry is (3* 1 = 3) and second entry is (5* 1+ 3* 2+  = 11) and so on.
+Output is an array whose first entry is (3* 1 = 3) and second entry is (5* 1+ 3* 2  = 11) and so on.
 But what does it mean ?<br>
 It is like taking weighted average of few entries of A at a time in an order.<br>
 It can be seen as a smoothed out version of original data like if we did this on an image, we will get blurred images as each pixel will be of average brightness of the group of pixels in the original image.<br>
