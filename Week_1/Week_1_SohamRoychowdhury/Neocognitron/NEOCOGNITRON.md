@@ -30,14 +30,18 @@ The inhibitory cell ***v<sub>C/-l</sub>(n)***, which have inhibitory synaptic co
 
 
 ![Screenshot 2024-05-13 111121.png](../_resources/Screenshot%202024-05-13%20111121.png)
+
 where ***c<sub>l</sub> (v)*** represents the efficiency of the unmodifiable excitatory synapses, and is set to be a monotonically decreasing function of ***|v|***. If a stimulus pattern which elicits a response from an S-cell is shifted in parallel in its position on the input layer, another S-cell in the same S-plane will respond instead of the first cell. The synaptic connections from S-layers to C-layers are fixed and unmodifiable.
 The output of a C-cell 
 in the ***k<sub>l</sub>*** -th C-plane in the ***l-*** th module is given by
+
 ![950e8984f4fe28137b64443ed7b2ab82.png](../_resources/950e8984f4fe28137b64443ed7b2ab82.png)
-The inhibitory cell ***V<sub>sl</sub>( n )***, which sends inhibitory signals to this C-cell and makes up the system of lateral inhibition, yields an output proportional to the (weighted) arithmetic mean of its inputs : 
+
+The inhibitory cell ***V<sub>sl</sub>( n )***, which sends inhibitory signals to this C-cell and makes up the system of lateral inhibition, yields an output proportional to the (weighted) arithmetic mean of its inputs : 
+
 ![4869b81883f9500fa3861fc8593ece18.png](../_resources/4869b81883f9500fa3861fc8593ece18.png)
-the efficiency of the unmodifiable 
-excitatory synapse ***d<sub>l</sub>( v )*** is set to be a monotonically decreasing function of ***|v|***
+
+the efficiency of the unmodifiable excitatory synapse ***d<sub>l</sub>( v )*** is set to be a monotonically decreasing function of ***|v|***
 
 ## Self organization of the network
 At first, several "representative" S-cells are selected from each S-layer every time when a stimulus pattern is presented. The representative is selected among the S-cells which have yielded large outputs, but the number of the representatives is so restricted that more than one representative are not selected from any single S-plane. Let cell ***U<sub>sl</sub>(k<sub>l</sub><sup>'</sup>, n<sup>'</sup> )*** be selected as a representative. The modifiable synapses which are afferent to the S-cells of the ***k<sub>l</sub>*** th S-plane, are reinforced by the amount shown below:
@@ -66,7 +70,9 @@ The number of excitatory input synapses to each
 C-cell is 5 x 5 in layers U<sub>cl</sub> and U<sub>c2</sub>, and is 2 x 2 in layer Uc3. Every S-column has a size such that it contains 5 x 5 x 24 cells for layers U<sub>s1</sub> and U<sub>s2</sub>, and 2 x 2 x 24 cells for layer U<sub>s3</sub>.
  ***r<sub>1</sub> =4.0 and r<sub>2</sub> = r<sub>3</sub> = 1.5***
 ***c<sub> l</sub> (v)*** is determined so as to satisfy the equation.
+
 ![6364678fb17a6da90ef05a86c4ec470d.png](../_resources/6364678fb17a6da90ef05a86c4ec470d.png)
+
 q<sub>1</sub> = l.0 and q<sub>2</sub> = q<sub>3</sub> = 16.0.
 
 
