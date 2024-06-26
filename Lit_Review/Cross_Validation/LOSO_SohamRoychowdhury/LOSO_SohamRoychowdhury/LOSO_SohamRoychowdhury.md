@@ -5,7 +5,7 @@
 In this study, we use a multilayer perceptron (MLP) to show importance
 of Leave-One-Subject-Out (LOSO) cross validation machine learning and how MLP is effective in making use of clean EEG data in mining out the features important for disease classification.
 
-## DATA EEG ACQUISITION ANS PREPROCESSING:
+## DATA EEG ACQUISITION AND PREPROCESSING:
 ### DATA ACQUISITION:
 The study used a 128-channel EEG system (Compumedics, Neuroscan Quick cap or Falk Minnow Easy-cap) to record EEG data from participants at a 2000 Hz sampling rate with a 500 Hz low-pass filter. Data from both caps were aligned using the 10–20 electrode positioning system, and a linked-ear reference was used. Recordings were conducted in a Faraday cage to minimize electromagnetic noise, with visual and auditory instructions provided via Presentation software. Manual responses were recorded using a custom-built response panel. Two mental tasks were included: a resting eyes-open task, where participants fixated on a white cross for 40 seconds, and a maze task, where participants navigated a hidden pathway on a screen, with the task ending after correct completion twice or after six minutes.
 ### ARTEFACT REMOVAL
