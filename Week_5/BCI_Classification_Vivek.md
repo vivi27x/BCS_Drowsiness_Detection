@@ -1,45 +1,68 @@
-# Classifying brain signals for Brain Computer Interfaces ![fe39816bb3e1714c56b2b4beb6b8ce10.png](../_resources/fe39816bb3e1714c56b2b4beb6b8ce10.png)
-## Why? 
-One of the important applications of EEG recordings is analyzing it to predict what the subject is thinking to do. For example- If we play a subway surfers using Brain computer Interface,BCI as control, so our aim will be to predict whether subject wants to go left or right or jump or duck.
-* * *
-## Some more examples 
-· Word spellers: selecting 1 out of 26–29 letters
-· Menu with options: selecting 1 out of N options
-· Semi-autonomous robots: selecting 1 out of N high-level commands
-![ef5de37c2caf280dff1ac478e35dd824.png](../_resources/ef5de37c2caf280dff1ac478e35dd824.png)
-* * *
-## How?
-We have input data that contains **channels** and their corresponding eeg recording which is a time series data.  We transform this signal to something called a feature vector.![96a5cb500540657b1a636620b2909740.png](../_resources/96a5cb500540657b1a636620b2909740.png)Combining feature vector of all channels, we get a matrix now that stores our potential input to the classifier.
-![564965b8bbb72ddba57fb1ab90ddce5d.png](../_resources/564965b8bbb72ddba57fb1ab90ddce5d.png)
-* * *
-## The five classifiers we will cover are:
+#  Classifying brain signals for Brain-Computer Interfaces (a short introduction)
 
-- #### Linear classifiers 
- A linear functions is used to discriminate between classes.
- For example- SVMs(Support Vector Machines) and LDA(Linear Discriminant Analysis)
- LDA is based on the mean vectors and the covariance matrices of patterns for individual classes. LDA basically uses hyperplanes to separate the classes. A pro of using LDAs as a classifier for is that they require a very low computational processing power (load), which is suitable for online BCI systems.
+### Why do you need classification?
+Many BCI applications require selecting 1 out of several options. So, by classifying brain signals we associate certain extracted features with certain commands. In its simplest case, classification techniques can classify a given brain signal into 1 of several classes, such as a binary classification (2 classes).
 
- Suppose we have 2 classes in a given data and we aim to find a line that separates them. SVMs not only find the line but also finds the line with maximum margin.![f06ea58e3a69bcf8e3e52e53a875b62a.png](../_resources/f06ea58e3a69bcf8e3e52e53a875b62a.png)
- 
-- #### Neural network classifiers
-These classifiers consist of multiple layers of neurons (also called multilayer perceptrons) connected in such a way that each neuron is activated using weighted values from the neurons in the previous layer and some activation functions. NNs work by ‘learning’ and adjusting a weight w that minimizes total squared output error (cost function) over all output units, which though backpropogation can change its own weight value.
+### Fundamentals
+- Classification of biomedical signals (from brain oscillation recordings), is the process of categorizing the electrical activity measured by our recording device. In other words, it is the process of grouping values of a set based on a property that all values in that set share. 
 
-- #### Nonlinear Bayesian classifiers
+- A classifier is the computational tool, used to obtain classification.
 
-Produce nonlinear decision boundaries.
-Generative models, enabling efficient rejection of uncertain samples, unlike discriminant classifiers.
-Types:
-1. Bayes Quadratic
-2. Hidden Markov Model (HMM)
+- It is not advised to use complex classifiers for a simple job. Using a deep neural network for a simple binary classification that could be solved with a linear discrimination, would be a waste of computational power, and make the BCI system slow and inefficient.
+- The most important things are,
+ 1.  EEG signals are very noisy, i.e. noise reduction should be performed
+2.  We should aim to choose the best features for classification
+3.  Prioritising the most important channels for a given feature helps classification (dimensionality reduction) 
 
-- ####  Nearest neighbor classifiers
-These classifier plot the data points and then for classifying an unlabeled data point, they determine the distance from nearest data (neighbours)points.With sufficiently large k and enough training samples, kNN can approximate any function which enables to produce nonlinear decision boundaries.The reason for not being among the more popular classifiers in BCI systems, is the curse of dimensionality that follows with nearest neighbor systems.
+- To classify the brain signals, we transform the EEG signals to a feature vector, use some function to get a full matrix of feature vectors. This is feature extraction.
 
-- #### Combinations of the above
- There are different strategies to combine classifiers in BCI systems:
- **Boosting**: Using several classifiers in cascade
- **Voting**: Several classifiers that are being used with each of them assigning the input feature vector to a class
- **Stacking**: Several classifiers, with each of them classifying the input feature vector (level 0 classifiers)
+![image](https://github.com/aarsh-12/BCS_Drowsiness_Detection/assets/169232982/36047344-2e03-4070-9ddc-d3a95de4604f)
 
-* * *
-![431811ed8f23e2f1942661f1c0130651.png](../_resources/431811ed8f23e2f1942661f1c0130651.png)
+## Classification Algorithms for BCI systems 
+### Linear classifiers
+Linear Classifiers are algorithms that use linear functions to distinguish classes. Two examples are LDA and SVM.
+
+#### Linear Discriminant Analysis
+LDA is a popular binary classifier. It is based on the mean vectors and the covariance matrices of patterns for individual classes. LDA basically uses hyperplanes to separate the classes. It is a simple classifier and works well on simple datasets, however is not as as accurate on complex EEG data.
+
+#### SVMs
+SVMs are some of the simplest supervised machine learning models out there.
+They help us find a line(or a hyperplane) with the highest margin which divides and classifies our data.
+In order to find the best line, first we must define the classifier margin. The classifier margin of a linear classifier is the width that the boundary could be increased by, before hitting any data points. The maximum margin linear classifier is the linear classifier with the maximum margin. 
+
+### Neural Networks
+Neural Networks are deep learning models which are used for datasets which require non-linear classification. 
+NNs learn by adjusting weights and biases, to minimize cost function and then using backpropagation to change its own weights. 
+![image](https://github.com/aarsh-12/BCS_Drowsiness_Detection/assets/169232982/1e662c27-885e-4bd1-bf8b-f21016ddc40d)
+
+## Nonlinear Bayesian Classifiers
+
+Bayes quadratic and HMMs are the two non-linear bayesian classifiers used.
+
+Bayesian Classification summarized in three points:  
+i. Assigns the highest probability to the feature vector for the class it belongs  
+ii. Bayes rule is used to calculate the posterior probability  
+iii. Using the maximum A-posteriori (MAP) rule and the calculated probabilities, the class of the feature vector can be determined.
+
+HMM are dynamic classifiers in speech recognition, they identify certain sequences of feature vectors to classify the time series data.
+
+## Nearest Neighbour Classifiers
+
+Its basic principle is assigning a feature vector to a class based on its nearest neighbor(s).
+It uses kNNs and MD. MD-based classifiers are good but are rarely seen in BCI literature. In case of using kNN, the aim is to assign an unseen point in the dominant class among its kNN, within the training set. With sufficiently large k and enough training samples, kNN can approximate any function that enables the production of nonlinear decision boundaries. The major issue with this is it is poor at higher dimensions. 
+
+## Combinations of the above
+There are different strategies to combine classifiers in BCI systems:
+
+**Boosting** : Using several classifiers in cascade
+
+**Voting** : Several classifiers that are being used with each of them assigning the input feature vector to a class
+
+**Stacking** : Several classifiers, with each of them classifying the input feature vector (level 0 classifiers)
+
+## Performance Metrics
+
+For a given algorithm, its performance metrics are evaluated through the classifier's accuracy. The classifier's performance can be optimized and improved in the post-processing stage.
+
+![image](https://github.com/aarsh-12/BCS_Drowsiness_Detection/assets/169232982/182c2cdd-615d-454f-ba3a-00a23c416353)
+ ---
